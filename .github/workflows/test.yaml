@@ -1,5 +1,8 @@
 name: Test If Condition
 on:
+  schedule:
+    # Run every 10 minutes
+    - cron: "*/10 * * * *"
   workflow_dispatch:
     inputs:
       email-on-failure:
