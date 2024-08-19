@@ -24,7 +24,7 @@ jobs:
           echo "This should always run."
           dir
       - name: Run if email
-        if: ${{ success() && (inputs.email-on-failure || github.event.issue.schedule) }}
+        if: ${{ success() && (inputs.email-on-failure || github.event.schedule) }}
         run: |
           echo "This should only run if email has been checked."
           Get-Date
