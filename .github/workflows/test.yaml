@@ -25,7 +25,7 @@ jobs:
           dir
           echo ${{ github.ref }}
       - name: Run if email
-        if: ${{ (success() && inputs.email-on-failure) || (sucess() &&  }}
+        if: ${{ (success() && inputs.email-on-failure) }}
         run: |
           echo "This should only run if email has been checked."
           Get-Date
