@@ -1,6 +1,11 @@
 name: Test If Condition
 on:
-  push
+  push:
+  workflow_dispatch:
+    inputs:
+      email:
+        required: true
+        type: boolean
 jobs:
   test-job:
     runs-on: windows-latest
@@ -15,7 +20,7 @@ jobs:
           echo "This should always run."
           dir
       - name: Only run on main
-        if: success() and ${{ github.ref == 'refs/heads/main' }}
+        if: success() and ${{ inputs.email }}
         run: |
           echo "This should only run on main."
           Get-Date
