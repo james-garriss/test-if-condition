@@ -2,7 +2,8 @@ name: Test If Condition
 on:
   workflow_dispatch:
     inputs:
-      email:
+      email-on-failure:
+        description: Check to send an email on failure
         required: true
         default: false
         type: boolean
@@ -20,7 +21,7 @@ jobs:
           echo "This should always run."
           dir
       - name: Run if email
-        if: ${{ success() && inputs.email }}
+        if: ${{ success() && inputs.email-on-failure }}
         run: |
           echo "This should only run if email has been checked."
           Get-Date
