@@ -1,6 +1,5 @@
 name: Test If Condition
 on:
-  push:
   workflow_dispatch:
     inputs:
       email:
