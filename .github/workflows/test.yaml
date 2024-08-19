@@ -1,0 +1,21 @@
+name: Test If Condition
+on:
+  push
+jobs:
+  test-job:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: powershell
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      - name: Always run
+        run: |
+          echo "This should always run."
+          dir
+      - name: Only run on main
+        if: success() and ${{ github.ref == 'refs/heads/main' }}
+        run: |
+          echo "This should only run on main."
+          Get-Date
