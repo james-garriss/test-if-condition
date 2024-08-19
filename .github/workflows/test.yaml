@@ -20,7 +20,7 @@ jobs:
           echo "This should always run."
           dir
       - name: Run if email
-        if: ${{ inputs.email }}
+        if: ${{ success() }} && ${{ inputs.email }}
         run: |
           echo "This should only run if email has been checked."
           Get-Date
