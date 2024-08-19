@@ -23,7 +23,7 @@ jobs:
         run: |
           echo "This should always run."
           dir
-          echo ${{ github.ref }}
+          echo ${{ github.event }}
       - name: Run if email
         if: ${{ (success() && inputs.email-on-failure) }}
         run: |
