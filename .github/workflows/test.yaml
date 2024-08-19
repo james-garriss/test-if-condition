@@ -5,6 +5,7 @@ on:
     inputs:
       email:
         required: true
+        default: false
         type: boolean
 jobs:
   test-job:
