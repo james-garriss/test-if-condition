@@ -1,4 +1,4 @@
-name: Run
+name: Two
 
 on:
   workflow_call:
@@ -13,9 +13,9 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: |
-          Write-Host "Hello"
+          exit 0
       - name: Notify on Failure
-        if: ${{ failure() && (inputs.EmailOnFailure || inputs.GitHubEventSchedule) }}
+        if: ${{ failure() && inputs.EmailOnFailure }}
         run: |
           Write-Host "World"
         # uses: dawidd6/action-send-mail@v3
