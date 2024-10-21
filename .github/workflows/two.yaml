@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Pass or Fail
         run: |
-          exit 1
+          exit 0
       - name: Email on Failure
         if: ${{ failure() && inputs.EmailOnFailure }}
         run: |
