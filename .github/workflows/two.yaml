@@ -10,11 +10,13 @@ on:
 
 jobs:
   email_test:
+    name: This is Two
     runs-on: windows-latest
     steps:
-      - run: |
+      - name: Pass or Fail
+        run: |
           exit 0
-      - name: Notify on Failure
+      - name: Email on Failure
         if: ${{ failure() && inputs.EmailOnFailure }}
         run: |
           Write-Host "Email b/c failure"
