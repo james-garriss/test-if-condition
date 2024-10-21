@@ -18,14 +18,21 @@ jobs:
   #   steps:
   #     - name: Checkout Repo
   #       uses: actions/checkout@v4
-  #     - name: Always run
+  #     - name: Always rune
   #       run: |
   #         echo "This should always run."
   #     - name: Run if email
   #       if: ${{ success() && (inputs.EmailOnFailure || github.event.schedule) }}
   #       run: |
   #         echo "This should only run if email has been checked."
-  test-two:
+  Run-One:
+    name: Run One
+    runs-on: windows-latest
+    steps:
+      - name: Always run
+        run: |
+          echo "This should always run."
+  Call-Two:
     name: Call Two
     uses: ./.github/workflows/two.yaml
     with:
