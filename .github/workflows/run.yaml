@@ -1,0 +1,28 @@
+on:
+  workflow_call:
+    inputs:
+      EmailOnFailure:
+        description: "True if an email should be sent when the workflow fails."
+        required: true
+        type: boolean
+
+jobs:
+  email_test:
+    runs-on: windows-latest
+    steps:
+      - run: |
+          Write-Host "Hello"
+      - name: Notify on Failure
+        # Debugging
+        # if: ${{ failure() && (inputs.EmailOnFailure || inputs.GitHubEventSchedule || inputs.GitHubEventName == 'push') }}
+        if: ${{ failure() && (inputs.EmailOnFailure || inputs.GitHubEventSchedule) }}
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.NotifierUsername }}
+          password: ${{ secrets.NotifierPassword }}
+          subject: Nightly functional test failure
+          body: The Def_Tenant1 test failed.  Please look at the "Nightly Product Functional Tests" workflow for more details.
+          to: ${{ steps.extract-email.outputs.emails }}
+          from: ScubaGear Notifier
