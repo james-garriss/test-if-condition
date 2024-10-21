@@ -27,6 +27,5 @@ jobs:
         #   username: ${{ secrets.NotifierUsername }}
         #   password: ${{ secrets.NotifierPassword }}
         #   subject: Nightly functional test failure
-        #   body: The Def_Tenant1 test failed.  Please look at the "Nightly Product Functional Tests" workflow for more details.
-        #   to: ${{ steps.extract-email.outputs.emails }}
+        #   body: Something failed.
         #   from: ScubaGear Notifier
