@@ -1,0 +1,32 @@
+name: One
+
+on:
+  workflow_dispatch:
+    inputs:
+      EmailOnFailure:
+        description: Check to send an email on failure
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  # test-one:
+  #   runs-on: windows-latest
+  #   defaults:
+  #     run:
+  #       shell: powershell
+  #   steps:
+  #     - name: Checkout Repo
+  #       uses: actions/checkout@v4
+  #     - name: Always run
+  #       run: |
+  #         echo "This should always run."
+  #     - name: Run if email
+  #       if: ${{ success() && (inputs.EmailOnFailure || github.event.schedule) }}
+  #       run: |
+  #         echo "This should only run if email has been checked."
+  test-two:
+    name: Call Two
+    uses: ./.github/workflows/two.yaml
+    with:
+      EmailOnFailure: ${{ inputs.EmailOnFailure }}
