@@ -5,7 +5,7 @@ on:
   #   - cron: "*/10 * * * *"
   workflow_dispatch:
     inputs:
-      email-on-failure:
+      EmailOnFailure:
         description: Check to send an email on failure
         required: true
         default: false
@@ -24,7 +24,12 @@ jobs:
           echo "This should always run."
           dir
       - name: Run if email
-        if: ${{ success() && (inputs.email-on-failure || github.event.schedule) }}
+        if: ${{ success() && (inputs.EmailOnFailure || github.event.schedule) }}
         run: |
           echo "This should only run if email has been checked."
           Get-Date
+  test-run:
+    name: Call Run
+    uses: ./.github/workflows/run.yaml
+    with:
+      EmailOnFailure: ${{ inputs.EmailOnFailure }}
