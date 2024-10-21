@@ -35,5 +35,7 @@ jobs:
   Call-Two:
     name: Call Two
     uses: ./.github/workflows/two.yaml
+    needs:
+      - Run-One
     with:
       EmailOnFailure: ${{ inputs.EmailOnFailure }}
