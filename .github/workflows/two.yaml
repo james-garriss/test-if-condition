@@ -17,7 +17,7 @@ jobs:
       - name: Notify on Failure
         if: ${{ failure() && inputs.EmailOnFailure }}
         run: |
-          Write-Host "World"
+          Write-Host "Email b/c failure"
         # uses: dawidd6/action-send-mail@v3
         # with:
         #   server_address: smtp.gmail.com
